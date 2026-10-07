@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Pendaftaran Ekstrakurikuler</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="page">
+    <section class="form-card">
+      <aside class="side-panel">
+        <div class="brand">
+          <div class="brand-icon">✳</div>
+          <div>
+            <strong>Ekskul Sekolah</strong>
+            <span>SMK N 1 Tengaran</span>
+          </div>
+        </div>
+
+        <div class="side-content">
+          <span class="eyebrow">YOUR NEXT CHAPTER</span>
+          <h1>Temukan<br>ruang untuk<br><span>bertumbuh.</span></h1>
+          <p>
+            Kenali minatmu, kembangkan bakatmu, dan ciptakan
+            pengalaman seru bersama teman-teman.
+          </p>
+
+          <div class="illustration">
+            <div class="circle circle-one"></div>
+            <div class="circle circle-two"></div>
+            <div class="floating-card card-one">✦</div>
+            <div class="floating-card card-two">✎</div>
+            <div class="main-emoji">🎓</div>
+            <div class="floating-card card-three">✧</div>
+          </div>
+
+          <div class="side-note">Mulai langkah kecilmu hari ini ↗</div>
+        </div>
+      </aside>
+
+      <section class="form-panel">
+        <div class="form-top">
+          <div class="user-icon">♙</div>
+          <button class="close-btn" id="closeBtn" type="button" aria-label="Tutup">×</button>
+        </div>
+
+        <div class="heading">
+          <span class="eyebrow">JOIN THE COMMUNITY</span>
+          <h2>Form Pendaftaran</h2>
+          <p>Lengkapi data dirimu untuk bergabung dengan ekstrakurikuler pilihan.</p>
+        </div>
+
+        <form id="registrationForm">
+          <div class="field">
+            <label for="name">Nama Lengkap <span>*</span></label>
+            <input id="name" name="name" type="text"
+              placeholder="Masukkan nama lengkap kamu"
+              minlength="3" required>
+            <small class="hint">Minimal 3 karakter.</small>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="email">Email <span>*</span></label>
+              <input id="email" name="email" type="email"
+                placeholder="nama@email.com" required>
+            </div>
+
+            <div class="field">
+              <label for="password">Password <span>*</span></label>
+              <input id="password" name="password" type="password"
+                placeholder="Minimal 3 karakter" minlength="3" required>
+              <small class="hint" id="passwordHint">Minimal 3 karakter.</small>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="confirmPassword">Konfirmasi Password <span>*</span></label>
+            <input id="confirmPassword" name="confirmPassword" type="password"
+              placeholder="Ulangi password kamu" minlength="3" required>
+            <small class="error" id="passwordError"></small>
+          </div>
+
+          <div class="field">
+            <label for="ekskul">Pilihan Ekstrakurikuler <span>*</span></label>
+            <select id="ekskul" name="ekskul" required>
+              <option value="">Pilih ekstrakurikuler</option>
+              <option>Jurnalistik</option>
+              <option>PMR</option>
+              <option>Paskibra</option>
+              <option>Pencak Silat</option>
+              <option>Seni Tari</option>
+              <option>Bahasa Jepang</option>
+              <option>Bantara</option>
+              <option>Futsal</option>
+              <option>Volly</option>
+              <option>Drumband</option>
+              <option>Robbana</option>
+              <option>Rohis</option>
+              <option>Faster</option>
+              <option>Padus</option>
+            </select>
+          </div>
+
+          <div class="info-box">
+            <span class="info-icon">i</span>
+            <div>
+              <strong>Pastikan datamu sudah benar</strong>
+              <p>Setelah mendaftar, status pendaftaran akan muncul di bawah form.</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="reset" class="btn btn-light" id="cancelBtn">Batal</button>
+            <button type="submit" class="btn btn-dark">Daftar Sekarang <span>↗</span></button>
+          </div>
+        </form>
+
+        <div class="status-card hidden" id="statusCard">
+          <div class="status-symbol">✓</div>
+          <div class="status-copy">
+            <strong>Pendaftaran Aktif</strong>
+            <p id="statusText"></p>
+          </div>
+          <button type="button" class="cancel-registration" id="cancelRegistration">
+            Batalkan
+          </button>
+        </div>
+
+        <div class="footer-note">
+          <span>♢ Data kamu aman</span>
+          <span>✧ Tumbuh bersama</span>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="toast-icon" id="toastIcon">✓</div>
+    <div>
+      <strong id="toastTitle">Berhasil!</strong>
+      <p id="toastMessage">Pendaftaran berhasil.</p>
+    </div>
+    <button id="toastClose" type="button" aria-label="Tutup notifikasi">×</button>
+  </div>
+
+  <div class="confirm-overlay hidden" id="confirmOverlay">
+    <div class="confirm-box">
+      <div class="confirm-icon">!</div>
+      <h3>Batalkan Pendaftaran?</h3>
+      <p>Apakah kamu yakin ingin membatalkan pendaftaran ekstrakurikuler ini?</p>
+      <div class="confirm-actions">
+        <button class="btn btn-light" id="keepBtn" type="button">Tidak</button>
+        <button class="btn btn-danger" id="confirmCancel" type="button">Ya, Batalkan</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="chat-toggle" id="chatToggle" type="button" aria-label="Buka chatbot">
+    <span class="chat-toggle-icon">✦</span>
+    <span class="chat-toggle-label">Butuh bantuan?</span>
+  </button>
+
+  <section class="chat-window hidden" id="chatWindow" aria-label="Chatbot bantuan">
+    <div class="chat-header">
+      <div class="bot-avatar">✦</div>
+      <div class="chat-heading">
+        <strong>Ekskul Assistant</strong>
+        <span><i></i> Siap membantu kamu</span>
+      </div>
+      <button id="chatClose" class="chat-close" type="button" aria-label="Tutup chatbot">×</button>
+    </div>
+
+    <div class="chat-messages" id="chatMessages" aria-live="polite">
+      <div class="chat-message bot-message">
+        <div class="message-avatar">✦</div>
+        <div class="message-bubble">
+          Hai! 👋 Aku Ekskul Assistant. Ada yang ingin kamu tanyakan tentang pendaftaran ekstrakurikuler?
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-questions">
+      <button type="button" class="quick-question" data-question="Apa syarat password?">Syarat password</button>
+      <button type="button" class="quick-question" data-question="Bagaimana cara mendaftar?">Cara daftar</button>
+      <button type="button" class="quick-question" data-question="Bagaimana cara membatalkan pendaftaran?">Cara membatalkan</button>
+    </div>
+
+    <form class="chat-input-area" id="chatForm">
+      <input id="chatInput" type="text" placeholder="Ketik pesan..." autocomplete="off" aria-label="Ketik pesan">
+      <button type="submit" aria-label="Kirim pesan">➤</button>
+    </form>
+    <div class="chat-footnote">Asisten informasi pendaftaran ekstrakurikuler</div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
